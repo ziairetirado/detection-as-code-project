@@ -4,6 +4,13 @@ Security detections written, version-controlled, tested, and deployed the
 same way application code is — instead of clicking rules together by hand
 in a SIEM UI.
 
+## Architecture
+
+<img width="1408" height="768" alt="DaC Architecture Diagram" src="https://github.com/user-attachments/assets/1857c90a-5a7c-4803-a557-60116216dccd" />
+
+
+
+
 ## How it works
 
 ```
