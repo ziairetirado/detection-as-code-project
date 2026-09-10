@@ -1,0 +1,27 @@
+title: AWS CloudTrail Logging Disabled or Deleted
+id: 7c1b1e2a-1a2b-4c3d-9e4f-000000000001
+status: stable
+description: >
+  Detects an identity stopping or deleting a CloudTrail trail, which is a
+  common technique to blind logging before further malicious activity.
+author: Zi'Aire Tirado
+date: 2026/09/09
+references:
+  - https://attack.mitre.org/techniques/T1562/008/
+tags:
+  - attack.defense_evasion
+  - attack.t1562.008
+logsource:
+  product: aws
+  service: cloudtrail
+detection:
+  selection:
+    eventSource: cloudtrail.amazonaws.com
+    eventName:
+      - StopLogging
+      - DeleteTrail
+      - UpdateTrail
+  condition: selection
+falsepositives:
+  - Planned trail maintenance performed by an authorized admin
+level: high

@@ -1,0 +1,30 @@
+title: AWS IAM Administrator Policy Attached to User or Role
+id: 7c1b1e2a-1a2b-4c3d-9e4f-000000000002
+status: stable
+description: >
+  Detects a highly privileged managed policy (e.g. AdministratorAccess)
+  being attached to an IAM user or role — a common privilege-escalation
+  and persistence technique.
+author: Zi'Aire Tirado
+date: 2026/09/09
+references:
+  - https://attack.mitre.org/techniques/T1098/
+tags:
+  - attack.privilege_escalation
+  - attack.persistence
+  - attack.t1098
+logsource:
+  product: aws
+  service: cloudtrail
+detection:
+  selection_event:
+    eventSource: iam.amazonaws.com
+    eventName:
+      - AttachUserPolicy
+      - AttachRolePolicy
+  selection_policy:
+    requestParameters.policyArn|contains: 'AdministratorAccess'
+  condition: selection_event and selection_policy
+falsepositives:
+  - Legitimate admin onboarding performed through an approved change ticket
+level: high

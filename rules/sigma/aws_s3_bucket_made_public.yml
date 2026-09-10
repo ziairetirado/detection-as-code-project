@@ -1,0 +1,31 @@
+title: AWS S3 Bucket Public Access Enabled
+id: 7c1b1e2a-1a2b-4c3d-9e4f-000000000005
+status: stable
+description: >
+  Detects an S3 bucket's Public Access Block being disabled or an ACL
+  being set to public-read/public-read-write, which can expose bucket
+  contents to the internet.
+author: Zi'Aire Tirado
+date: 2026/09/09
+references:
+  - https://attack.mitre.org/techniques/T1530/
+tags:
+  - attack.collection
+  - attack.exfiltration
+  - attack.t1530
+logsource:
+  product: aws
+  service: cloudtrail
+detection:
+  selection_block_disabled:
+    eventSource: s3.amazonaws.com
+    eventName: PutBucketPublicAccessBlock
+    requestParameters.PublicAccessBlockConfiguration.BlockPublicAcls: 'false'
+  selection_public_acl:
+    eventSource: s3.amazonaws.com
+    eventName: PutBucketAcl
+    requestParameters.AccessControlPolicy.AccessControlList.Grant.Grantee.URI|contains: 'AllUsers'
+  condition: selection_block_disabled or selection_public_acl
+falsepositives:
+  - Buckets intentionally used for public static website hosting
+level: high
