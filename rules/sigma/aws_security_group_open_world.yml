@@ -1,0 +1,25 @@
+title: AWS Security Group Ingress Opened to 0.0.0.0/0
+id: 7c1b1e2a-1a2b-4c3d-9e4f-000000000004
+status: stable
+description: >
+  Detects a new ingress rule authorizing traffic from any IPv4 address
+  (0.0.0.0/0), which can expose internal services to the internet.
+author: Zi'Aire Tirado
+date: 2026/09/09
+references:
+  - https://attack.mitre.org/techniques/T1562/007/
+tags:
+  - attack.defense_evasion
+  - attack.t1562.007
+logsource:
+  product: aws
+  service: cloudtrail
+detection:
+  selection:
+    eventSource: ec2.amazonaws.com
+    eventName: AuthorizeSecurityGroupIngress
+    requestParameters.cidrIp: '0.0.0.0/0'
+  condition: selection
+falsepositives:
+  - Public-facing load balancers or bastion hosts that are intentionally open on specific ports
+level: medium
