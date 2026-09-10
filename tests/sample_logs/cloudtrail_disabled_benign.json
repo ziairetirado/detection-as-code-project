@@ -1,0 +1,8 @@
+{
+  "eventVersion": "1.08",
+  "eventSource": "cloudtrail.amazonaws.com",
+  "eventName": "LookupEvents",
+  "eventTime": "2026-09-08T02:14:33Z",
+  "userIdentity": {"type": "IAMUser", "userName": "auditor"},
+  "requestParameters": {"name": "org-trail"}
+}
