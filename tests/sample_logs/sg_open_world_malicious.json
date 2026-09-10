@@ -1,0 +1,11 @@
+{
+  "eventSource": "ec2.amazonaws.com",
+  "eventName": "AuthorizeSecurityGroupIngress",
+  "eventTime": "2026-09-08T05:40:00Z",
+  "userIdentity": {"type": "IAMUser", "userName": "dev-mike"},
+  "requestParameters": {
+    "groupId": "sg-0123456789abcdef0",
+    "ipPermissions": {"items": [{"ipProtocol": "tcp", "fromPort": 22, "toPort": 22}]},
+    "cidrIp": "0.0.0.0/0"
+  }
+}

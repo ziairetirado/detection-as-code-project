@@ -1,0 +1,7 @@
+{
+  "eventName": "ConsoleLogin",
+  "eventTime": "2026-09-08T04:22:05Z",
+  "userIdentity": {"type": "IAMUser", "userName": "j.doe"},
+  "responseElements": {"ConsoleLogin": "Success"},
+  "additionalEventData": {"MFAUsed": "Yes"}
+}

@@ -1,0 +1,10 @@
+{
+  "eventSource": "iam.amazonaws.com",
+  "eventName": "AttachUserPolicy",
+  "eventTime": "2026-09-08T03:01:10Z",
+  "userIdentity": {"type": "IAMUser", "userName": "platform-admin"},
+  "requestParameters": {
+    "userName": "readonly-svc",
+    "policyArn": "arn:aws:iam::aws:policy/ReadOnlyAccess"
+  }
+}

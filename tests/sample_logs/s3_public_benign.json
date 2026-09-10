@@ -1,0 +1,14 @@
+{
+  "eventSource": "s3.amazonaws.com",
+  "eventName": "PutBucketAcl",
+  "eventTime": "2026-09-08T06:15:00Z",
+  "userIdentity": {"type": "IAMUser", "userName": "dev-mike"},
+  "requestParameters": {
+    "bucketName": "internal-logs",
+    "AccessControlPolicy": {
+      "AccessControlList": {
+        "Grant": {"Grantee": {"URI": "http://acs.amazonaws.com/groups/global/AuthenticatedUsers"}, "Permission": "READ"}
+      }
+    }
+  }
+}
